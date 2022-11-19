@@ -9,7 +9,6 @@ export const makeRequest = async function <T>({
   headers = {},
   mode = "cors",
 }: MakeRequestInput): Promise<T> {
-  console.log(config.baseURL + endpoint);
   return fetch(config.baseURL + endpoint + constructParamsString(params), {
     method,
     mode,

@@ -1,3 +1,3 @@
 export const NewsItem = () => {
-  return <div>News Item</div>;
+  return <div>News Item Page</div>;
 };

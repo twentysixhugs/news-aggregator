@@ -5,7 +5,7 @@ export const makeRequest = async function <T>({
   endpoint = "",
   method = "get",
   params = {},
-  data = undefined,
+  data,
   headers = {},
   mode = "cors",
 }: MakeRequestInput): Promise<T> {

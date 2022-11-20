@@ -9,7 +9,7 @@ export const makeRequest = async function <T>({
   headers = {},
   mode = "cors",
 }: MakeRequestInput): Promise<T> {
-  return fetch(config.baseURL + endpoint + constructParamsString(params), {
+  return fetch(constructURL(config.baseURL, endpoint, params), {
     method,
     mode,
     headers,
@@ -27,11 +27,12 @@ async function handleResponse(res: Response) {
   });
 }
 
-function constructParamsString(params = {}) {
-  const str = Object.entries(params).reduce(
-    (acc, cur) => (cur[1] ? acc + `${cur[0]}=${cur[1]}&` : ""),
-    "?"
+function constructURL(baseURL: string, endpoint: string, params = {}) {
+  const url = new URL(baseURL + endpoint);
+
+  Object.entries<string>(params).forEach((param) =>
+    url.searchParams.set(param[0], param[1])
   );
 
-  return str.slice(0, str.length - 1);
+  return url;
 }

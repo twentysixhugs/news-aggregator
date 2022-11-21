@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const LayoutContainer = styled.div`
   display: flex;
   flex-flow: column;
+
   padding-inline: 170px;
+  min-height: 100vh;
 
   @media (max-width: 850px) {
     align-items: center;

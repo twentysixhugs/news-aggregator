@@ -15,9 +15,9 @@ import { GetNewsResponse } from "./news.api.types";
 export const fetchTopHeadlines =
   (countryCode: CountryCode, category: NewsCategory): AppThunk =>
   async (dispatch, getState) => {
-    const hasInState = !!getState().topHeadlines[`${category}-${countryCode}`];
+    const inState = getState().topHeadlines[`${category}-${countryCode}`];
 
-    if (hasInState) {
+    if (inState !== "error" && inState) {
       return;
     }
 

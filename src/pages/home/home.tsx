@@ -59,10 +59,9 @@ export const Home = () => {
   return (
     <>
       <TotalResults>
-        Total results:{" "}
         {selectedTopHeadlines &&
           selectedTopHeadlines !== "error" &&
-          selectedTopHeadlines.totalResults}
+          "Total results: " + selectedTopHeadlines.totalResults}
       </TotalResults>
       <StyledDropdownsWrapper>
         <CountryDropdown

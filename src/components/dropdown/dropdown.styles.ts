@@ -16,6 +16,12 @@ export const StyledToggle = styled.button.attrs<StyledToggleProps>((props) => ({
   height: 2.8rem;
   padding: 1.2rem;
 
+  @media (max-width: 500px) {
+    width: 130px;
+    font-size: 1rem;
+    justify-content: center;
+  }
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -64,6 +70,11 @@ export const StyledMenuItem = styled.li.attrs<StyledMenuItemProps>((props) => ({
   width: 210px;
   height: 2.8rem;
   padding: 0.4rem;
+
+  @media (max-width: 500px) {
+    width: 130px;
+    font-size: 1rem;
+  }
 
   display: flex;
   justify-content: center;

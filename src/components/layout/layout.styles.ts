@@ -13,7 +13,7 @@ export const LayoutContainer = styled.div`
   }
 
   @media (max-width: 500px) {
-    padding-inline: 10px;
+    padding-inline: 35px;
   }
 `;
 

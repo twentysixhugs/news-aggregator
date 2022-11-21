@@ -31,19 +31,21 @@ export const Home = () => {
     dispatch(fetchTopHeadlines(countryCode, category));
   };
 
-  let view;
+  let resultView, totalResultsView;
 
   if (selectedTopHeadlines === "error") {
-    view = (
+    resultView = (
       <NewsEntryError
         text="Something went wrong when getting news data"
         onTryAgain={handleTryAgain}
       />
     );
+    totalResultsView = "Error";
   } else if (!selectedTopHeadlines) {
-    view = <Loader />;
+    resultView = <Loader />;
+    totalResultsView = "";
   } else {
-    view = selectedTopHeadlines.articles.map((el) => (
+    resultView = selectedTopHeadlines.articles.map((el) => (
       <NewsEntry
         key={el.url}
         url={el.url}
@@ -54,15 +56,13 @@ export const Home = () => {
         title={el.title}
       />
     ));
+
+    totalResultsView = selectedTopHeadlines.totalResults;
   }
 
   return (
     <>
-      <TotalResults>
-        {selectedTopHeadlines &&
-          selectedTopHeadlines !== "error" &&
-          "Total results: " + selectedTopHeadlines.totalResults}
-      </TotalResults>
+      <TotalResults>Total results: {totalResultsView}</TotalResults>
       <StyledDropdownsWrapper>
         <CountryDropdown
           selectedValue={countryCode}
@@ -73,7 +73,7 @@ export const Home = () => {
           onSelect={(category) => setCategory(category)}
         />
       </StyledDropdownsWrapper>
-      {view}
+      {resultView}
     </>
   );
 };

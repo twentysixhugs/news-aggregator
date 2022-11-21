@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useMediaQuery } from "src/shared/hooks/useMediaQuery";
 import { getPrettyDate } from "src/shared/utils";
 import {
   ContentContainer,
@@ -25,14 +26,20 @@ export const NewsEntry = ({
 
   const [shouldRenderImageLoader, setShouldRenderImageLoader] = useState(true);
 
-  let view;
+  const smallScreenQuery = useMediaQuery("(max-width: 650px)");
+
+  let imageView;
 
   if (shouldRenderImagePlaceholder) {
-    view = <ImagePlaceholder>No image</ImagePlaceholder>;
+    imageView = <ImagePlaceholder>No image</ImagePlaceholder>;
   }
 
   if (shouldRenderImageLoader) {
-    view = <ImagePlaceholder>Loading</ImagePlaceholder>;
+    imageView = <ImagePlaceholder>Loading</ImagePlaceholder>;
+  }
+
+  if (smallScreenQuery.matches) {
+    imageView = null;
   }
 
   const handleImageLoadError = () => {
@@ -55,7 +62,7 @@ export const NewsEntry = ({
           by {author}, {getPrettyDate(publishedAt)}
         </Information>
       </TextContainer>
-      {!shouldRenderImagePlaceholder && (
+      {!shouldRenderImagePlaceholder && !smallScreenQuery.matches && (
         <ImageCropContainer>
           <Image
             src={imgUrl}
@@ -67,7 +74,7 @@ export const NewsEntry = ({
           />
         </ImageCropContainer>
       )}
-      {view}
+      {imageView}
     </ContentContainer>
   );
 };

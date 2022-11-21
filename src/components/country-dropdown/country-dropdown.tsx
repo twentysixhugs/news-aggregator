@@ -1,3 +1,4 @@
+import { useMediaQuery } from "src/shared/hooks/useMediaQuery";
 import { Dropdown } from "../dropdown";
 import { countries } from "./country-dropdown.data";
 import { CountryDropdownProps } from "./country-dropdown.types";

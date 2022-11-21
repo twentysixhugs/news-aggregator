@@ -14,6 +14,7 @@ import {
   StyledMenuItem,
   StyledToggle,
 } from "./dropdown.styles";
+import { useMediaQuery } from "src/shared/hooks/useMediaQuery";
 
 const DropdownContext = React.createContext<DropdownContextType>(
   {} as DropdownContextType
@@ -31,6 +32,7 @@ export const Dropdown = ({ children }: DropdownProps) => {
 
 const Toggle = ({ name }: DropdownToggleProps) => {
   const { isOpen, setIsOpen } = useContext(DropdownContext);
+  const smallScreenQuery = useMediaQuery("(max-width: 500px)");
 
   return (
     <StyledToggle
@@ -39,10 +41,12 @@ const Toggle = ({ name }: DropdownToggleProps) => {
       open={isOpen}
     >
       <span>{name}</span>
-      <StyledIcon
-        path={mdiArrowDownDropCircle}
-        rotate={isOpen ? 0 : -90}
-      ></StyledIcon>
+      {!smallScreenQuery.matches && (
+        <StyledIcon
+          path={mdiArrowDownDropCircle}
+          rotate={isOpen ? 0 : -90}
+        ></StyledIcon>
+      )}
     </StyledToggle>
   );
 };

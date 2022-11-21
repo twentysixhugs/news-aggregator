@@ -9,6 +9,17 @@ export const ContentContainer = styled.div`
   padding-block: 1rem;
 
   border-bottom: 1px solid rgba(255, 141, 100, 0.13);
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: appear 0.9s ease-out;
 `;
 
 export const TextContainer = styled.div`

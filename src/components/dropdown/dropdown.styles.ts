@@ -42,7 +42,7 @@ export const StyledMenu = styled.ul`
 
   transform: translateY(10px);
 
-  @keyframes appear {
+  @keyframes dropdownAppear {
     from {
       transform: translateY(-10px);
     }
@@ -50,7 +50,7 @@ export const StyledMenu = styled.ul`
       transform: translateY(-1px);
     }
   }
-  animation: appear 0.25s ease both;
+  animation: dropdownAppear 0.25s ease both;
 `;
 
 type StyledMenuItemProps = {

@@ -10,7 +10,7 @@ export const ContentContainer = styled.div`
 
   border-bottom: 1px solid rgba(255, 141, 100, 0.13);
 
-  @keyframes appear {
+  @keyframes newsEntryAppear {
     from {
       opacity: 0;
     }
@@ -19,7 +19,7 @@ export const ContentContainer = styled.div`
     }
   }
 
-  animation: appear 0.9s ease-out;
+  animation: newsEntryAppear 0.9s ease-out;
 `;
 
 export const TextContainer = styled.div`

@@ -34,7 +34,7 @@ export const NewsEntry = ({
     imageView = <ImagePlaceholder>No image</ImagePlaceholder>;
   }
 
-  if (shouldRenderImageLoader) {
+  if (shouldRenderImageLoader && !shouldRenderImagePlaceholder) {
     imageView = <ImagePlaceholder>Loading</ImagePlaceholder>;
   }
 

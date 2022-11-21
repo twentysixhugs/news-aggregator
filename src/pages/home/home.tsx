@@ -8,6 +8,7 @@ import {
 import { useAppDispatch, useAppSelector } from "src/app/hooks";
 import { fetchTopHeadlines } from "src/features/news/api/news.api";
 import { StyledDropdownsWrapper } from "./home.styles";
+import { NewsEntry } from "./components/news-entry";
 
 export const Home = () => {
   const [countryCode, setCountryCode] = useState<CountryCode>("us");
@@ -45,7 +46,15 @@ export const Home = () => {
       {selectedTopHeadlines &&
         selectedTopHeadlines !== "error" &&
         selectedTopHeadlines.articles.map((el) => (
-          <div key={el.url}>{el.title}</div>
+          <NewsEntry
+            key={el.url}
+            url={el.url}
+            author={el.author}
+            description={el.description}
+            imgUrl={el.urlToImage}
+            publishedAt={new Date(el.publishedAt)}
+            title={el.title}
+          />
         ))}
     </>
   );

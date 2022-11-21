@@ -15,6 +15,12 @@ import { GetNewsResponse } from "./news.api.types";
 export const fetchTopHeadlines =
   (countryCode: CountryCode, category: NewsCategory): AppThunk =>
   async (dispatch, getState) => {
+    const hasInState = !!getState().topHeadlines[`${category}-${countryCode}`];
+
+    if (hasInState) {
+      return;
+    }
+
     try {
       const res = await makeRequest<GetNewsResponse>({
         endpoint: `/top-headlines/category/${category}/${countryCode}.json`,

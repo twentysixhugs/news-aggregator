@@ -20,6 +20,8 @@ export const LayoutHeader = styled.h1`
   font-size: 3rem;
   font-weight: bold;
 
+  color: #ff8d64;
+
   @media (max-width: 500px) {
     font-size: 2rem;
   }

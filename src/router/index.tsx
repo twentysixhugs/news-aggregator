@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Layout } from "src/components/layout";
-import { Home } from "src/pages/home";
-import { NewsItem } from "src/pages/news-item";
+import { Home } from "src/pages/home/home";
+import { NewsItem } from "src/pages/news-item/news-item";
 import { HomeRoute } from "./routes";
 
 export const Router = () => {
